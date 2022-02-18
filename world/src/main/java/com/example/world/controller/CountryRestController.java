@@ -20,12 +20,12 @@ public class CountryRestController {
 	public CountryRestController(CountryRepository countryRepository) {
 		this.countryRepository = countryRepository;
 	}
-
+    // http://localhost:8100/world/api/v1/continents
 	@GetMapping("continents")
 	public List<String> getAllContinents(){
 		return countryRepository.getAllContinents();
 	}
-	// /countries?continent=Asia
+	// http://localhost:8100/world/api/v1/countries?continent=Asia
 	@GetMapping("countries")
 	public List<CountryDocument> getCountriesByContinent(
 			@RequestParam String continent){
