@@ -7,13 +7,17 @@ import org.springframework.stereotype.Service;
 
 import com.example.lottery.service.LotteryService;
 import com.example.lottery.service.RandomNumberGeneratorService;
+import com.example.lottery.service.RandomNumberServiceQuality;
+import com.example.lottery.service.ServiceQualityLevel;
 
 @Service
 public class StandardLotteryService implements LotteryService {
 
 	private RandomNumberGeneratorService randomNumberGeneratorService;
 	
-	public StandardLotteryService(RandomNumberGeneratorService randomNumberGeneratorService) {
+	public StandardLotteryService(
+			@RandomNumberServiceQuality(ServiceQualityLevel.FAST)
+			RandomNumberGeneratorService randomNumberGeneratorService) {
 		this.randomNumberGeneratorService = randomNumberGeneratorService;
 	}
 
