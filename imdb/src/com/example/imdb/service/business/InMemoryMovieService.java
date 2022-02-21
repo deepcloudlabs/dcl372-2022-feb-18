@@ -13,6 +13,7 @@ import com.example.imdb.domain.Genre;
 import com.example.imdb.domain.Movie;
 import com.example.imdb.dto.CriteriaBean;
 import com.example.imdb.service.MovieService;
+import com.example.imdb.service.Profiling;
 import com.example.imdb.service.SequenceService;
 
 /**
@@ -1535,6 +1536,7 @@ public class InMemoryMovieService implements MovieService {
 	}
 
 	@Override
+	@Profiling
 	public Collection<Movie> findAllMoviesByYearRange(int fromYear, int toYear) {
 		Collection<Movie> resultList = new ArrayList<>();
 		for (Movie movie : movies.values()) {
