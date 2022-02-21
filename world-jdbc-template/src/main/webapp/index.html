@@ -37,13 +37,15 @@
 					<tr>
 						<th>No</th>
 						<th>Country Name</th>
+						<th>Continent</th>
 						<th>Population</th>
 					</tr>
 				</thead>
 				<tbody data-bind="foreach: {data: countries, as: 'country'}">
 					<tr>
 						<td data-bind="text: $index() + 1"></td>
-						<td data-bind="text: country.countryName"></td>
+						<td data-bind="text: country.name"></td>
+						<td data-bind="text: country.continent"></td>
 						<td data-bind="text: country.population"></td>
 					</tr>
 				</tbody>

@@ -26,7 +26,7 @@ class WorldViewModel {
 		})
 		.then(res => res.json())
 		.then(countries => {
-			countries.sort((left, right) => left.countryName.localeCompare(right.countryName));
+			countries.sort((left, right) => left.name.localeCompare(right.name));
 			this.countries(countries);
 		});
 	}
