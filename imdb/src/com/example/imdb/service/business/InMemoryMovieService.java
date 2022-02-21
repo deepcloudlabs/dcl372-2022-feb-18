@@ -8,12 +8,16 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+
+import com.example.imdb.aop.Caching;
+import com.example.imdb.aop.Profiling;
 import com.example.imdb.domain.Director;
 import com.example.imdb.domain.Genre;
 import com.example.imdb.domain.Movie;
 import com.example.imdb.dto.CriteriaBean;
 import com.example.imdb.service.MovieService;
-import com.example.imdb.service.Profiling;
 import com.example.imdb.service.SequenceService;
 
 /**
@@ -1548,6 +1552,7 @@ public class InMemoryMovieService implements MovieService {
 	}
 
 	@Override
+	@Cacheable(cacheNames = "movies")
 	public Collection<Movie> findAllMoviesByYearRangeAndGenre(String genre,
 			int fromYear, int toYear) {
 		Collection<Movie> resultList = new ArrayList<>();
@@ -1592,6 +1597,7 @@ public class InMemoryMovieService implements MovieService {
 	}
 
 	@Override
+	@CacheEvict(cacheNames = "movies")
 	public Movie addMovie(Movie movie) {
 		if (movie.getId() < 0)
 			movie.setId((int) sequenceSrv.nextId("movies"));
@@ -1600,7 +1606,9 @@ public class InMemoryMovieService implements MovieService {
 	}
 
 	@Override
+	@Caching
 	public Collection<Genre> findAllGenres() {
+		System.err.println("InMemoryMovieService::findAllGenres");
 		return genres.values();
 	}
 

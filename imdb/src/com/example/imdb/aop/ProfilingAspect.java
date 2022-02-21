@@ -32,10 +32,10 @@ public class ProfilingAspect {
 		return result; 
 	}
 	
-	@Pointcut("@annotation(com.example.imdb.service.Profiling)")
+	@Pointcut("@annotation(com.example.imdb.aop.Profiling)")
 	public void methodIsProfilingAnnotated() {}
 	
-	@Pointcut("within(@com.example.imdb.service.Profiling *)")
+	@Pointcut("within(@com.example.imdb.aop.Profiling *)")
 	public void classIsProfilingAnnotated() {}
 
 	@Pointcut("execution( * com.example.imdb..*(..))")

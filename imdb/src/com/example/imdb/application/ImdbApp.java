@@ -18,6 +18,15 @@ public class ImdbApp {
 			movieService.findAllMoviesByYearRange(1970, 1979)
 			            .forEach(System.out::println);
 			System.err.println(movieService.getClass().getName());
+			System.err.println(movieService.findAllGenres()); 
+			System.err.println(movieService.findAllGenres()); 
+			System.err.println(movieService.findAllGenres()); 
+			System.err.println(movieService.findAllGenres()); 
+			System.err.println(movieService.findAllGenres()); 
+			System.err.println(movieService.findAllGenres()); 
+			System.err.println(movieService.findAllGenres()); 
+			System.err.println(movieService.findAllGenres()); 
+			System.err.println(movieService.findAllGenres()); 
 //			movieService = container.getBean(MovieService.class);
 //			movieService = container.getBean(MovieService.class);
 //			movieService = container.getBean(MovieService.class);
