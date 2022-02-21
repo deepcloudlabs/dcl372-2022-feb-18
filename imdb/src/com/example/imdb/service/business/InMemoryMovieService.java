@@ -6,9 +6,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.PostConstruct;
-
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Repository;
+import javax.annotation.PreDestroy;
 
 import com.example.imdb.domain.Director;
 import com.example.imdb.domain.Genre;
@@ -22,8 +20,8 @@ import com.example.imdb.service.SequenceService;
  * @author Binnur Kurt
  *
  */
-@Repository
-@Scope("singleton")
+//@Repository
+//@Scope("singleton")
 public class InMemoryMovieService implements MovieService {
 	// 1. Field Injection
 	//@Autowired
@@ -42,12 +40,18 @@ public class InMemoryMovieService implements MovieService {
 	// 3. Constructor Injection
 	// @Autowired
 	public InMemoryMovieService(SequenceService sequenceSrv) {
+		System.err.println("InMemoryMovieService::InMemoryMovieService(sequenceSrv)"); 
 		movies = new ConcurrentHashMap<>();
 		genres = new ConcurrentHashMap<>();
 		directors = new ConcurrentHashMap<>();
 		this.sequenceSrv = sequenceSrv;
 	}
 
+	@PreDestroy
+	public void clearResources() {
+		System.out.println("Closing the InMemoryMovieService resources...");
+	}
+	
 	@PostConstruct
 	public void populate() {
 		sequenceSrv.nextId("movies", 256);
