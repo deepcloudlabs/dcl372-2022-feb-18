@@ -21,7 +21,7 @@ public class ProfilingAspect {
 	       methodIsProfilingAnnotated() || 
 	       classIsProfilingAnnotated() 
 	     )
-			""")
+	""")
 	public Object profile(ProceedingJoinPoint pjp) throws Throwable {
 		var start = System.nanoTime();
 		var result = pjp.proceed();
