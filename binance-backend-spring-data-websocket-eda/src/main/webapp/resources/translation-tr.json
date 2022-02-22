@@ -1,0 +1,18 @@
+{
+  "buttonStart": "Başla",
+  "buttonStop": "Durdur",
+  "buttonEnglish": "İngilizce",
+  "buttonTurkish": "Türkçe",
+  "panelTitleDashboard": "Gösterge Paneli",
+  "panelTitleChart": "Grafik",
+  "labelSymbol": "Simge",
+  "labelName": "Ad",
+  "labelRate": "Oran",
+  "labelLogo": "Logo",
+  "labelWindowSize": "Pencere Boyu",
+  "optionChoose": "Seçim yapın...",
+  "messageConnected": "Bağlandı.",
+  "messageCurrenciesRetrieved": "Kripto para birim listesi alındı.",
+  "messageMonitoringStarted": "İzleme başlatıldı!",
+  "messageMonitoringStoped": "İzleme durduruldu!"
+}

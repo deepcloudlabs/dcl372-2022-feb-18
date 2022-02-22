@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stockmarket Dashboard</title>
+    <style type="text/css">
+        @import url("css/bootstrap.css");
+        @import url("css/bootstrap-theme.css");
+        @import url("css/toastr.css");
+    </style>
+    <script type="text/javascript" src="js/lib/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/lib/i18next-1.7.7.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="js/lib/toastr.min.js"></script>
+    <script type="text/javascript" src="js/lib/stomp.js"></script>
+    <script type="text/javascript" src="js/lib/sockjs-0.3.4.js"></script>
+    <script type="text/javascript" src="js/lib/knockout-3.4.2.debug.js"></script>
+    <script type="text/javascript" src="js/lib/Chart.bundle.js"></script>
+    <script type="text/javascript" src="js/lib/ko-chart.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/monitor.js"></script>
+</head>
+<body>
+<p />
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-10" >
+                    <h3 class="panel-title" data-i18n="panelTitleDashboard"></h3>
+                </div>
+                <div class="col-sm-2" >
+                    <button data-bind="click: changeLng('tr')"
+                            class="btn btn-info"
+                            data-i18n="buttonTurkish"></button>
+                    <button data-bind="click: changeLng('en')"
+                            class="btn btn-warning"
+                            data-i18n="buttonEnglish"></button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="symbol" data-i18n="labelSymbol"></label>
+                <select id="symbol"
+                        data-bind="enable: !isMonitoring(), options: stocks, optionsText: 'symbol',
+                                   value: symbol,
+                                   optionsValue: 'symbol',
+                                   optionsCaption: translate('optionChoose')"
+                        class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label for="windowSize" data-i18n="labelWindowSize"></label>
+                <select id="windowSize"
+                        data-bind="value: windowSize"
+                        class="form-control">
+                    <option label="10" value="10">10</option>
+                    <option label="25" value="25">25</option>
+                    <option label="50" value="50">50</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success"
+                        data-i18n="buttonStart"
+                        data-bind="visible: connected() && ! isMonitoring(), click: start"></button>
+                <button class="btn btn-danger"
+                        data-i18n="buttonStop"
+                        data-bind="visible: connected() && isMonitoring(), click: stop"></button>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title" data-i18n="panelTitleChart"></h3>
+        </div>
+        <div class="panel-body">
+            <canvas data-bind="chart: { type: 'line', data: data, options: { observeChanges: true, throttle: 100, animation: { duration: 0} } }"></canvas>
+        </div>
+    </div>
+</div>
+</body>
+</html>

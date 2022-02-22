@@ -1,0 +1,18 @@
+{
+  "buttonStart": "Start",
+  "buttonStop": "Stop",
+  "buttonEnglish": "English",
+  "buttonTurkish": "Turkish",
+  "panelTitleDashboard": "Dashboard",
+  "panelTitleChart": "Chart",
+  "labelSymbol": "Symbol",
+  "labelName": "Name",
+  "labelRate": "Rate",
+  "labelLogo": "Logo",
+  "labelWindowSize": "Window Size",
+  "optionChoose": "Choose...",
+  "messageConnected": "Connected.",
+  "messageCurrenciesRetrieved": "All currencies are retrieved.",
+  "messageMonitoringStarted": "Monitoring is started!",
+  "messageMonitoringStoped": "Monitoring is stoped!"
+}
