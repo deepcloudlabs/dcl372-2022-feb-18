@@ -18,26 +18,26 @@ import com.example.imdb.repository.MovieRepository;
 @RequestMapping
 @CrossOrigin
 public class MovieRestController {
-	// TODO: define the dependencies
+	private MovieRepository movieRepository;
+	private GenreRepository genreRepository;
 
-	public MovieRestController(/* TODO : inject required dependencies */) {
-		// TODO: initialize the dependencies
+	public MovieRestController(MovieRepository movieRepository, GenreRepository genreRepository) {
+		this.movieRepository = movieRepository;
+		this.genreRepository = genreRepository;
 	}
 
-	// http://localhost:8100/imdb/api/v1/genres
 	@GetMapping("/genres")
 	@Cacheable("genres")
 	public List<String> getGenres() {
 		return genreRepository.findAll()
 				.stream()
-				.map(/* TODO: Write a function either by method reference or lambda expression */)
-				./* make sure that genre names are sorted in alphabetical order */
+				.map(Genre::getDescription)
+				.sorted()
 				.toList();
 	}
 
-	// http://localhost:8100/imdb/api/v1/movies?genre=Drama&fromYear=1970&toYear=1979
 	@GetMapping("/movies")
 	public List<Movie> getMoviesByYearRangeAndGenre(@RequestParam String genre,@RequestParam  int fromYear,@RequestParam  int toYear) {
-		return movieRepository.findBy/* TODO: design the repository method name */(genre,fromYear,toYear);
+		return movieRepository.findByGenresDescriptionAndYearBetween(genre,fromYear,toYear);
 	}
 }
