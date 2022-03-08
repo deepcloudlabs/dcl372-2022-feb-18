@@ -35,8 +35,8 @@ public class ModelMapperConfig {
 	@Bean("standardModelMapper")
 	ModelMapper createModelMapper() {
 		var modelMapper = new ModelMapper();
-		modelMapper.addConverter(/* TODO: Add the corresponding converter here */);
-		modelMapper.addConverter(/* TODO: Add the corresponding converter here */);
+		modelMapper.addConverter(BOOK_TO_BOOK_RESPONSE_CONVERTER,Book.class, BookResponse.class);
+		modelMapper.addConverter(BOOK_REQUEST_TO_BOOK_CONVERTER,BookRequest.class, Book.class);
 		return modelMapper;
 	}
 }
